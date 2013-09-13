@@ -1,0 +1,12 @@
+mkdir temp1
+cd temp1
+touch proga.c
+
+echo "#include <stdio.h>" > proga.c
+echo "int main() {" >> proga.c
+echo "return 0; }" >> proga.c
+
+gcc proga.c -o proga.out
+./proga.out
+
+
