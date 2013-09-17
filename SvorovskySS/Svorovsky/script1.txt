@@ -1,0 +1,13 @@
+mkdir svorovsky
+cd svorovsky
+touch iatupoivnature.txt
+echo shalom > iatupoivnature.txt
+cat iatupoivnature.txt
+mkdir s1
+cp iatupoivnature.txt s1
+cd s1
+pwd 
+cd ..
+rm iatupoivnature.txt
+rm -r s1
+echo poshel cmotret futbol 
