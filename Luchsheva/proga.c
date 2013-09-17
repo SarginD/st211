@@ -1,20 +1,20 @@
-#include<unistd.h>
-#include<sys/types.h>
-#include<stdio.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <stdio.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 
 int main(int argc, char *argv[]) {
-  FILE * fo;
-  fo = fopen("id","wt");
-  if( (fo=fopen("id","wt")) == 0) {
+  FILE * fo = fopen("id.txt","wt");
+  if (fo == 0) 
     perror("Can not open the file");
-  }
-  int id = 0;
-  id = getuid();
-  int idgr = 0;
-  idgr = getgid();
-  char str[20] = "User identity: "; 
-  char strgr[20] = "Group identity: ";
+  int id = getuid();
+  int idgr = getgid();
+  char str[] = "User identity:"; 
+  char strgr[] = "Group identity:";
   fprintf( fo, "%s %d \n%s %d\n", str, id, strgr, idgr);
+  fclose(fo);
+  close( open("id.txt", O_RDONLY) );
   return 0;
 }
 
