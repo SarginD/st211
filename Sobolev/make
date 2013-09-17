@@ -1,0 +1,20 @@
+echo Hello
+who am i
+echo This file will create new directory with new files.
+mkdir newdir
+cp make newdir
+cd newdir
+touch qwe.txt
+touch ewq.c
+touch hiho.txt
+find *.txt
+echo Hi! > hiho.txt
+echo Hello > qwe.txt
+cat hiho.txt qwe.txt
+echo Now this file will disappear. But you can find copy in the new directory.
+cd ..
+rm make
+man man
+history
+echo Good Luck!
+
