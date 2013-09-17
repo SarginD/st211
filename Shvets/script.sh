@@ -1,8 +1,8 @@
 ls
 mkdir temp
 cd temp
-touch test.txt
-echo "Hello!" > test.txt
+touch 55.txt
+echo "Hello!" > 55.txt
 cd ..
 pwd
 tree
