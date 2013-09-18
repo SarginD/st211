@@ -1,0 +1,29 @@
+mkdir temp1
+cd temp1
+touch hello.c
+echo "
+#include<stdio.h>
+int main()
+{
+	printf(\"\nHi! This is my first bash file\nYEEEEEEEEEEEEEEEEEEEEEEEE\n\n\");
+	return 0;
+}" >> hello.c
+gcc hello.c
+./a.out
+rm a.out
+rm hello.c
+cd ..
+rm -r temp1
+
+mkdir temp2
+pushd temp2
+touch 2.txt
+pushd
+touch 1.txt
+echo asdf >1.txt
+cat 1.txt
+find *.txt
+cp 1.txt temp2/2.txt
+cat temp2/2.txt
+rm -r temp2
+rm 1.txt

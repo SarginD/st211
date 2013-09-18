@@ -1,0 +1,23 @@
+ls
+mkdir smth_new
+touch i_am_your_computer.txt
+touch please_tell_with_me.txt
+touch i_am_another_file.xls
+echo "I like chatting with nice guys.">> i_am_your_computer.txt
+echo "Let's play together" >> please_tell_with_me.txt
+ls
+cat i_am_your_computer.txt
+cat please_tell_with_me.txt
+cd smth_new
+touch boring.txt
+echo "Let's play!" >> boring.txt
+ls
+cd ..
+pwd
+rm -r smth_new
+echo "I want to sleep, goodbye." > i_am_your_computer.txt
+find *.txt
+rm i_am_another_file.xls
+rm i_am_your_computer.txt
+rm please_tell_with_me.txt
+ls 
