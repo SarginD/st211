@@ -19,7 +19,7 @@ int main ( int argc, char *argv[] )
 		if ( close(wow) == 0 )
 			printf("succesfully closed\n");
 		esle
-			perror( "oops, can not open this file" )
+			perror( "oops, can not open this file" );
 	}
 	return 0;
 }
