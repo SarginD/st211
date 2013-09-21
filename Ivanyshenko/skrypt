@@ -1,4 +1,0 @@
-mkdir temp
-cp skrypt temp
-cd temp
-./skrypt
