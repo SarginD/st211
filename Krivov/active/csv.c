@@ -1,9 +1,9 @@
 #include "csv.h"
 
-int csv_read(char *statement, int maxlen) {
+int csv_read(FILE *file, char *statement, int maxlen) {
 	assert(statement != NULL && maxlen > 0);
 	int c;
-	while ((c = getchar()) == ' ' || c == '\n')
+	while ((c = fgetc(file)) == ' ' || c == '\n')
 		;
 	if (c == ';') { 
 		perror("csv_read: There is nothing before ';'\n"); 
@@ -12,10 +12,10 @@ int csv_read(char *statement, int maxlen) {
 	if (c == EOF)
 		return 0;
 	int i = 1;
-	for (*statement++ = c; (c = getchar()) != ';' && c != '\n' && c != EOF; i++, *statement++ = c) //get real information
+	for (*statement++ = c; (c = fgetc(file)) != ';' && c != '\n' && c != EOF; i++, *statement++ = c) //get real information
 		if (i == maxlen) {  //memory is over
 			if (c == ' ') { //If other symbols are all spaces
-				while ((c = getchar()) == ' ')
+				while ((c = fgetc(file)) == ' ')
 					;
 				if (c == '\n' || c == ';' || c == EOF) { //still have enough memory
 					*statement = '\0';
