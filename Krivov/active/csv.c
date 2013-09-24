@@ -1,4 +1,7 @@
 #include "csv.h"
+#include <stdio.h>
+#include <assert.h>
+#include <stdlib.h>
 
 int csv_read(FILE *file, char *statement, int maxlen) {
 	assert(statement != NULL && maxlen > 0);
