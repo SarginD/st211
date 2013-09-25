@@ -12,8 +12,8 @@ int main()
      if (f==-1)
        perror("ne pechalsya");
      if (close(f)!=0)
-       printf("file closed\n");
+        printf("not closed\n");
      else
-       printf("not closed\n");
+       printf("file closed\n");
     return 0;
   }
