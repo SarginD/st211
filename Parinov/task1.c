@@ -12,6 +12,6 @@ int test = open("script.sh", O_RDONLY);
 if (test == -1)
 perror("Sluchilas beda\n");
 else
-printf("Vse ontlichno\n")
+printf("Vse ontlichno\n");
 return 0;
 }
