@@ -2,14 +2,14 @@
 #include <malloc.h>
 
 
-int main()
+
+int main(int argc, char *argv[])  // name of file with instruction // first string after name of program
 {
-	int pid;
 	int *status; 
 	char program[MAXLEN];
 	float *delay = (float *)malloc(sizeof(float));
 
-	FILE *input = fopen("instruction", "r");
+	FILE *input = fopen(argv[1], "r");  
 	assert(input != NULL);
 	
 
@@ -17,7 +17,7 @@ int main()
 
 	while (read_f(input, program, delay) != 0)
 	{
-		pid = fork();
+		int pid = fork();
 		
 		if (pid == -1) 
 		{
@@ -27,13 +27,13 @@ int main()
 		{
 			if (pid == 0) //Doughter process
 			{
-				sleep(delay[1]);
+				sleep(delay[0]);
 				execve(program, NULL, NULL);
 				perror("Program was not executed\n");
 			}
 			else  //Parent process
 			{
-				
+				//return to fork
 			}
 		}
 	}

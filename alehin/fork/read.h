@@ -44,7 +44,7 @@ int read_f(FILE *input, char *program, float *delay)
 
 
 		time_c = atof(time);
-		delay[1] = time_c;
+		delay[0] = time_c;
 
 		return 1;
 	}
