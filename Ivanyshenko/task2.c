@@ -1,20 +1,48 @@
-#include <sys/types.h>
-#include <sys/stat.h>
+
+#include <errno.h>
 #include <unistd.h>
 #include <stdio.h>
-#include <errno.h>
-#include <fcntl.h>
-int main ()
-{
-	printf ("uid is %d\n", getuid());
-	printf ("gid is %d\n", getgid());
-	int file = open("1.c", O_RDONLY);
-	if (file == -1)
-		perror("file wasn't open correctly");
-	else if (close(file) == 0)
-		printf ("file opened and closed correctly");
-	     else 
-		perror ("file wasn't closed correctly");
 
+
+int main(int argc, char *argv[])
+{
+	double delay=0;
+	int i;
+	char* point;
+	char buffer[100]={0};
+	pid_t *pid, array_pid[100] = {},*pid0;
+	pid = array_pid;
+	pid0 = pid;
+	if (argc == 2)
+	{
+		FILE* file;
+		file = fopen(argv[1],"r");
+		while (fscanf(file,"%s",buffer) != EOF)
+		{
+			point = buffer;
+			while (*(point) != ';')
+			point++;
+			*point = NULL;
+			point++;
+			sscanf(point,"%lg",&delay);
+			*pid = fork();
+			if (*pid == 0)
+			{
+				usleep(delay);
+				execlp(buffer,buffer, NULL);
+				return 0;
+			}
+			pid++;
+		}
+		fclose(file);
+		int* status;
+		while (pid0 != pid)
+		{
+			waitpid(*pid0,status,0);
+			pid0++;
+		}
+		waitpid(*pid,status,0);
+	}
+	else perror ("bad");
 	return (0);
 }
