@@ -24,19 +24,13 @@ int main(int argc, char * argv[]){
 		if (pid < 0)
 			perror("Process can not be created\n");
 		if (pid != 0)
-<<<<<<< HEAD
 			waitpid(pid, NULL, 0);
-=======
-//  FIXME: we should point here where to put status:
-			watpid(pid, status, 0);
->>>>>>> 289273b46a61e51753009cff926727b5ed2c9207
 		else {
 			usleep(tmp.delay);
 			execlp(tmp.com_text, tmp.com_text, NULL);
 		}
 		tmp = pread(f_in);
 	}
-	fclose(f_in);
 	return 0;
 }
 
@@ -48,15 +42,8 @@ process pread(FILE * f_in){
 	process end = {"That's all", -1};
     
 	while (1){
-<<<<<<< HEAD
 		fscanf(f_in, "%c", &temp);
 		if(temp == ';')
-=======
-//  FIXME: any compiler should hate this:
-		fscanf(f_in, "s", %temp);
-//  FIXME: here should be ';', not ";"
-		if(temp == ";")
->>>>>>> 289273b46a61e51753009cff926727b5ed2c9207
 			break;
 		if(temp == EOF)
 			return end;
