@@ -1,5 +1,5 @@
 #include <sys/types.h>
-//#include <wait.h>
+
 #include <unistd.h>
 #include <stdio.h>
 #include <sys/wait.h>
@@ -7,9 +7,10 @@ int main ( int argc , char *argv[] )
 {
     double delay==0;
     char str1[20] = {0};
-    pid_t *pid;
-
-    int i=0,l;
+    pid_t *pid, a[20]={};
+    pid=a;
+    pid_t *pid0;
+    pid0=pid;
     if ( argc == 2 )
         {
             FILE* file;
@@ -26,7 +27,6 @@ int main ( int argc , char *argv[] )
                     pid++;
                 }
             fclose(file);
-            pid_t *pid0;
             while (pid0 != pid)
                 {
                     waitpid(*pid0,NULL,0);
