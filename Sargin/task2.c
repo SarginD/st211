@@ -9,7 +9,7 @@
 int read_s(FILE *input, char *command, char *time) {
         char buf[50]={0};
 	char pt;
-// fixed problem:
+//  fixed problem:
         if(fgets(buf, sizeof(buf), input) == NULL)
 	return 0;
 	
