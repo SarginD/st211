@@ -73,7 +73,7 @@ process parse(char statement[COM_SIZE])
     process temp = {};
     double time_sec = 0;
     long time_msec = 0, i = 0;
-    char ret_com[COM_SIZE], time[COM_SIZE];
+    char ret_com[COM_SIZE] = "", time[COM_SIZE] = "";
     // getting the command
     for (i; statement[i] != ';'; ++i)
         ret_com[i] = statement[i];
