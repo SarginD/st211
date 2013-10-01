@@ -28,6 +28,8 @@ int main(int argc, char *argv[])  // name of file with instruction // first stri
 			if (pid == 0) //Doughter process
 			{
 				sleep(delay[0]);
+//  FIXME: these is wrong use of execve! you should pass argvs to the program!
+//  FIXME: commands in the list are not time sorted!
 				execve(program, NULL, NULL);
 				perror("Program was not executed\n");
 			}
@@ -37,7 +39,8 @@ int main(int argc, char *argv[])  // name of file with instruction // first stri
 			}
 		}
 	}
-	
+//	FIXME: you should use &status to tell the compiler where to put the result, it is not an array!!
+//  FIXME: every process created should wait for child to finish. You have their pids, so move it to parent process
 	waitpid(-1, status, 0);
 
 

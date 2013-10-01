@@ -14,6 +14,8 @@ int read_s(FILE *input, char *command, char *time ) {
 //	while ((pt == ' ') || (pt == '\t')) pt = buf[++i];
 //	if (pt == '\n')
 	while (pt != ';') {
+//  FIXME: address issue here
+
 		*command++=pt;
 		pt = buf[++i];
 		}

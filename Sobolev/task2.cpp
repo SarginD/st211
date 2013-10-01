@@ -4,7 +4,7 @@
 #include <errno.h>
 #include <sys/stat.h>
 #include <unistd.h>
-#include <wait.h>
+//#include <wait.h>
 
 struct process {
 	char com_text[20];
@@ -18,6 +18,8 @@ int main(int argc, char * argv[]){
 	FILE * f_in = fopen(argv[1], "r");
 	process tmp = pread(f_in);
 	int pid;
+//  FIXME: parse went wrong! in a case "ls;4" tmp gets com_text value "ls/B"
+
     
 	while(tmp.delay != -1){
 		pid = fork();
@@ -26,7 +28,7 @@ int main(int argc, char * argv[]){
 		if (pid != 0)
 			waitpid(pid, NULL, 0);
 		else {
-			usleep(tmp.delay);
+			sleep(tmp.delay);
 			execlp(tmp.com_text, tmp.com_text, NULL);
 		}
 		tmp = pread(f_in);
