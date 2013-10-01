@@ -1,0 +1,5 @@
+ls;5
+ls;3
+pwd;2
+hostname;3
+uname;4
