@@ -41,6 +41,7 @@ int main(int argc, char** argv)
 
     while (fscanf(f_in, "%s", command) != EOF)
     {
+//  FIXME: not works(, command is "ls;4", exec is null defined
         exec = parse(command);
         t_pid = fork();
         if (t_pid == 0)
