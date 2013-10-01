@@ -1,5 +1,4 @@
 #include <sys/types.h>
-
 #include <unistd.h>
 #include <stdio.h>
 #include <sys/wait.h>
@@ -35,4 +34,5 @@ int main ( int argc , char *argv[] )
             waitpid(*pid,NULL,0);
         }
     else { perror("neverny vvod"); }
+    return (0);
 }
