@@ -1,0 +1,19 @@
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <stdio.h>
+int main()
+  {
+    int f = open("example.txt", O_RDONLY);
+    printf("User ID is %d\n", getuid());
+    printf("Group ID is %d\n", getgid());
+     if (f==-1)
+       perror("ne pechalsya");
+     if (close(f)!=0)
+        printf("not closed\n");
+     else
+       printf("file closed\n");
+    return 0;
+  }
