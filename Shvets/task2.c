@@ -23,7 +23,7 @@ int main(int argc, char* argv[])
                                   while (*(seek) != ';')
                                   point++;
                                   *seek = NULL;
-                                  sscanf(point,"%lg",&delay);
+                                  sscanf(seek,"%lg",&delay);
                                  *pid = fork();
                                   if (*pid == 0)
                                   {
