@@ -9,7 +9,7 @@ int main(int argc, char* argv[])
      double delay==0;
      char name[100]={0};
      int i;
-     char* seek
+     char* seek;
      pid_t *pid, ar_pid[50] = {},*pid0;
      pid = ar_pid;
      pid0 = pid;
