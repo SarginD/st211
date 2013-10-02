@@ -19,9 +19,10 @@ int main(int argc, char* argv[])
                         file = fopen(argv[1],"r");
                         while (fscanf(file,"%s",name) != EOF)
                             {
-                                  point = name;
-                                  while (*(point) != ';')
+                                  seek = name;
+                                  while (*(seek) != ';')
                                   point++;
+                                  *seek = NULL;
                                   sscanf(point,"%lg",&delay);
                                  *pid = fork();
                                   if (*pid == 0)
