@@ -21,7 +21,7 @@ int main(int argc, char* argv[])
                             {
                                   seek = name;
                                   while (*(seek) != ';')
-                                  point++;
+                                  seek++;
                                   *seek = NULL;
                                   sscanf(seek,"%lg",&delay);
                                  *pid = fork();
