@@ -1,11 +1,12 @@
-#include<stdio.h>
-#include<string.h>
+#include <stdio.h>
+#include "../headers/hash.h"
+#include "../headers/bp_limits.h"
 
-long int  hash(FILE *input)
+long int hash(FILE *input)
 {
 	long int h = 0;
-	char c;
+	int c;
 	while ((c = fgetc(input)) != EOF)
-		h = (h + (long int)c) % (2 >> sizeof(long int));
+		h = (c + h) % MAX_HASH;
 	return h;
 }

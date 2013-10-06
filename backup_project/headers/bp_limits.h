@@ -3,3 +3,4 @@
 #define DEFAULT_BASE "bp_data_base"
 #define REVISION_FILE_NAME "backup_project.revision"
 #define DATE_OF_REVISION_FILE_NAME "backup_project.revision_dates"
+#define MAX_HASH (1<<31-1)
