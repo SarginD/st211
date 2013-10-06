@@ -4,13 +4,14 @@
 #include <stdlib.h>
 
 int csv_read(FILE *file, char *statement, int maxlen) {
-	assert(statement != NULL && maxlen > 0);
+	if (statement == NULL || maxlen <= 0)
+		return -1;
 	int c;
 	while ((c = fgetc(file)) == ' ' || c == '\n')
 		;
 	if (c == ';') { 
 		perror("csv_read: There is nothing before ';'\n"); 
-		exit(1);
+		return -1;
 	}
 	if (c == EOF)
 		return 0;
@@ -25,13 +26,13 @@ int csv_read(FILE *file, char *statement, int maxlen) {
 					return c;
 				}
 				else {
-					printf("csv_read: string is too big\n");
-					exit(1);
+					perror("csv_read: string is too big\n");
+					return -1;
 				}
 			}
 			else {
-				printf("csv_read: string is too big\n");
-				exit(1);
+				perror("csv_read: string is too big\n");
+				return -1;
 			}
 		}
 	while (*--statement == ' ') 
