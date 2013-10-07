@@ -6,6 +6,7 @@
 
 int main(int argc, char* argv[])
 {
+//   FIXME: gcc hates it!!!
      double delay==0;
      char name[100]={0};
      int i;
@@ -36,6 +37,7 @@ int main(int argc, char* argv[])
             fclose(file);
             while (pid0 != pid)
                 {
+//    FIXME: status has never been initialized:
                     waitpid(*pid0,status,0);
                     pid0++;
                 }

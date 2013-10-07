@@ -48,6 +48,8 @@ int main(int argc, char * argv[]) {
 		if (pid == 0) {
 			usleep(cur_delay);
 			execlp(p_arr[i].com_text, p_arr[i].com_text, NULL);
+//  FIXME: code after execlp never executes in a case execlp had no error
+//  FIXME: waitpid takes pid as first
 			int * status;
 			waitpid(p_arr[i].delay, status, 0);
 		}

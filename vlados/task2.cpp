@@ -20,6 +20,7 @@ int main(int argc, const char * argv[])
                 buf = strtok(NULL, ";");
             }
             time = (atoi(x[1])*1000000);
+//   FIXME: paren process ends while children is alive
             int pid_t = fork();
             if (pid_t == 0) {
                 usleep(time);

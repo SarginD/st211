@@ -9,6 +9,7 @@ typedef struct{
 	int i;
 } file;
 
+// FIXME: every program should return something!
 void main(){
 	FILE *f;
 	file temp;
@@ -21,10 +22,13 @@ void main(){
 	int pause[100];
 //	clrscr();
 	printf("\n");
+//  FIXME: you should take argument from command line
 	f=fopen("aaa.txt","rt");
 	printf("reading information from file...\n");
 	while (ch!=EOF) {
 		do{
+//  FIXME: please provide working file example for these parser
+
 			ch=fgetc(f);
 			if (ch!=' ')
 				i=10*i+ch-48;
@@ -70,6 +74,7 @@ void main(){
 	}
 	for(n=0;n<j;n++){
 	    if(pid[n]>0){
+//  FIXME: you should use waitpid here
 		wait(0);
 	    }
 	}

@@ -19,6 +19,7 @@ char command[256], *pch;
         pch = strchr(command, ';');
         *pch = '\0';
         time = atoi(pch+1);
+//   FIXME: paren process ends while children is alive
         int pid_t = fork();
         if (pid_t == 0) {
             usleep(time * Translation_in_seconds);

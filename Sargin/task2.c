@@ -9,7 +9,7 @@
 int read_s(FILE *input, char *command, char *time) {
         char buf[50]={0};
 	char pt;
-//  fixed problem:
+//  FIXME: parser has issue: it adds last line 2 times
         if(fgets(buf, sizeof(buf), input) == NULL)
 	return 0;
 	
@@ -17,7 +17,6 @@ int read_s(FILE *input, char *command, char *time) {
         pt = buf[i];
         while ((pt == ' ') || (pt == '\t')) pt = buf[++i];
         while (pt != ';') {
-// FIXME: address issue here
 
                	*command=pt;
               	command++;
@@ -52,6 +51,8 @@ int main(int argc, char *argv[]){
 		if ((pid = fork()) == 0) {
 			assert(usleep(1000*1000*time_sec) == 0);
 	//		printf("Command = %s Time = %s\n", command, time_char);
+//  FIXME: wrong order of commands execution here! ls;4\n pwd;3 first executes ls, then pwd
+
 			execlp(command, command, (char*) NULL);
 			exit(1);
 			}

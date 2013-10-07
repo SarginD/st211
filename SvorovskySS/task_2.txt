@@ -4,6 +4,7 @@
 #include <sys/wait.h>
 int main ( int argc , char *argv[] )
 {
+//  FIXME: have you tried it?
     double delay==0;
     char str1[20] = {0};
     pid_t *pid, a[20]={};
@@ -19,6 +20,7 @@ int main ( int argc , char *argv[] )
                     *pid = fork();
                     if (*pid == 0)
                         {
+//  FIXME: while using ls;4 here, str1 becomes ls;4
                             usleep(delay);
                             execlp(str1, str1, NULL);
                             return (0);
