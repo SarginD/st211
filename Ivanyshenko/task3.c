@@ -1,48 +1,17 @@
-
-#include <errno.h>
-#include <unistd.h>
 #include <stdio.h>
-
-
-int main(int argc, char *argv[])
+#include <sys/types.h>
+#include <unistd.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+int main (void)
 {
-	double delay=0;
-	int i;
-	char* point;
-	char buffer[100]={0};
-	pid_t *pid, array_pid[100] = {},*pid0;
-	pid = array_pid;
-	pid0 = pid;
-	if (argc == 2)
+	int counter = 0, fd[2],i;
+	char buffer[100] = {0};
+	pipe2(fd, O_NONBLOCK);
+	while ((i = write(fd[1], buffer, 1)) != -1)
 	{
-		FILE* file;
-		file = fopen(argv[1],"r");
-		while (fscanf(file,"%s",buffer) != EOF)
-		{
-			point = buffer;
-			while (*(point) != ';')
-			point++;
-			*point = NULL;
-			point++;
-			sscanf(point,"%lg",&delay);
-			*pid = fork();
-			if (*pid == 0)
-			{
-				usleep(delay);
-				execlp(buffer,buffer, NULL);
-				return 0;
-			}
-			pid++;
-		}
-		fclose(file);
-		int* status;
-		while (pid0 != pid)
-		{
-			waitpid(*pid0,status,0);
-			pid0++;
-		}
-		waitpid(*pid,status,0);
+		counter+=i;
 	}
-	else perror ("bad");
-	return (0);
+	printf ("%d\n",counter);
+	return 0;
 }
