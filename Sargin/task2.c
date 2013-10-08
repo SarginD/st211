@@ -11,8 +11,7 @@ int read_s(FILE *input, char *command, char *time) {
 	char pt;
 //  FIXME: parser has issue: it adds last line 2 times
         if(fgets(buf, sizeof(buf), input) == NULL)
-	return 0;
-	
+	return -1;
         int i = 0;
         pt = buf[i];
         while ((pt == ' ') || (pt == '\t')) pt = buf[++i];
@@ -40,13 +39,15 @@ int main(int argc, char *argv[]){
  		perror("Write filename in the command line when you start the programm");
 		exit(1);
                 }
+	int c;
 	FILE *input = fopen(argv[1],"r");
 	char command[50], time_char[50];
 	double time_sec;
 	pid_t pid, pid_longest;
 	double time_longest = 0;
 	do {
-		read_s(input, command, time_char);
+		c = read_s(input, command, time_char);
+		if (c == -1) break;
 		sscanf(time_char, "%lf", &time_sec);
 		if ((pid = fork()) == 0) {
 			assert(usleep(1000*1000*time_sec) == 0);
@@ -60,7 +61,7 @@ int main(int argc, char *argv[]){
 			time_longest = time_sec;
 			pid_longest = pid;
 			}
-		} while (!feof(input));
+		} while (c != -1);
 	int status;
 	waitpid(pid_longest, &status, 0);
 	fclose(input);
