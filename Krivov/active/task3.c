@@ -11,7 +11,7 @@ void *thread_write(void *arg) {
 	char mas[1] = {'a'};
 	int d[2];
 	assert(!pipe(d));
-	for (*i = 0; write(d[1], mas, 1); (*i)++)
+	for (*i = 0; write(d[1], mas, 1) == 1; (*i)++)
 		;
 	return NULL;
 }
